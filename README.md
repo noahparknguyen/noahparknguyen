@@ -10,12 +10,6 @@
 
 </div>
 
-Thanks for stopping by! My name is Noah, I'm a full-stack developer, computer
-science grad, and professional nap taker living in Ottawa, Ontario. I mainly do
-web development and frontend stuff for fun, while my professional experience has
-mostly been in the backend and internal tools.
-
-<br>
 <br>
 
 <div align="center">
