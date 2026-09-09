@@ -11,8 +11,8 @@ few things, and they are credited here for the same reason the site's
   CC0 1.0. Fetched at render time and baked into the WebP, so the published
   image has no runtime dependency on the service. Each mark remains the
   trademark of its respective owner.
-- **Hollow Knight cameo** — Team Cherry. Used decoratively, and it is not
-  covered by this repo's licence.
+- **Hollow Knight cameo** (`vendor/hk-the-hollow-knight-and-knight.webp`) —
+  Team Cherry. Used decoratively, and it is not covered by this repo's licence.
 
 ## Fonts
 

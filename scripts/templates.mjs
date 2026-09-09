@@ -126,23 +126,26 @@ const CARDS = [
     id: "statmon",
     title: "Statmon",
     tint: "var(--violet-soft)",
-    blurb: "A set of Pokémon tools that can be read as of any generation.",
+    blurb:
+      "A simple set of Pokémon tools. Compare stats, view type matchups, and play games.",
     tags: ["React", "Vite", "Tailwind", "Cloudflare"],
-    note: "480 tests, zero runtime requests",
+    note: "statmon.noahparknguyen.workers.dev",
   },
   {
     id: "hubspot",
     title: "HubSpot Tool",
     tint: "var(--blue-soft)",
-    blurb: "Paste a URL, see what a site runs, and what could replace it.",
+    blurb:
+      "A discovery tool that lets you see what your website is built with, and recommends HubSpot products that could replace them.",
     tags: ["Node", "React", "Docker", "Jest"],
-    note: "Capstone, built for a real client",
+    note: "hubspot-recommendation-tool.onrender.com",
   },
   {
     id: "portfolio",
     title: "Portfolio",
     tint: "var(--orchid-soft)",
-    blurb: "My personal site. A bulletin board of pinned paper and live widgets.",
+    blurb:
+      "My personal website. A bulletin board where I show off both my professional work and hobbies.",
     tags: ["React", "Vite", "Tailwind", "Cloudflare"],
     note: "noahpn.dev",
   },
@@ -151,11 +154,11 @@ const CARDS = [
 export const cards = CARDS.map((c) => ({
   name: `card-${c.id}`,
   width: 420,
-  height: 195,
+  height: 215,
   html: () =>
     shell(
       420,
-      195,
+      215,
       `
   <div class="card">
     <span class="pin"><i></i></span>
@@ -184,7 +187,7 @@ export const cards = CARDS.map((c) => ({
     font-size:10px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
     border:2px solid var(--ink); background:var(--paper); padding:2px 6px;
   }
-  .note { font-family:"Caveat", cursive; font-size:19px; color:var(--label); margin-top:7px; line-height:1; }`,
+  .note { font-family:"Caveat", cursive; font-size:18px; white-space:nowrap; color:var(--label); margin-top:7px; line-height:1; }`,
     ),
 }));
 
@@ -202,13 +205,48 @@ export const cards = CARDS.map((c) => ({
 // Editors are deliberately absent. The strip is things I build WITH, and an IDE
 // is where I sit, not part of the stack. That rule is inherited from the site.
 const STAMPS = [
-  { slug: "react", label: "React", tint: "var(--rose-soft)", href: "https://react.dev" },
-  { slug: "tailwindcss", label: "Tailwind", tint: "var(--violet-soft)", href: "https://tailwindcss.com" },
-  { slug: "openjdk", label: "Java", tint: "var(--rose-soft)", href: "https://www.java.com" },
-  { slug: "python", label: "Python", tint: "var(--violet-soft)", href: "https://www.python.org" },
-  { slug: "figma", label: "Figma", tint: "var(--blue-soft)", href: "https://www.figma.com" },
-  { slug: "obsidian", label: "Obsidian", tint: "var(--orchid-soft)", href: "https://obsidian.md" },
-  { slug: "spring", label: "Spring", tint: "var(--blue-soft)", href: "https://spring.io" },
+  {
+    slug: "react",
+    label: "React",
+    tint: "var(--rose-soft)",
+    href: "https://react.dev",
+  },
+  {
+    slug: "tailwindcss",
+    label: "Tailwind",
+    tint: "var(--violet-soft)",
+    href: "https://tailwindcss.com",
+  },
+  {
+    slug: "openjdk",
+    label: "Java",
+    tint: "var(--rose-soft)",
+    href: "https://www.java.com",
+  },
+  {
+    slug: "python",
+    label: "Python",
+    tint: "var(--violet-soft)",
+    href: "https://www.python.org",
+  },
+  {
+    slug: "figma",
+    label: "Figma",
+    tint: "var(--blue-soft)",
+    href: "https://www.figma.com",
+  },
+  {
+    slug: "obsidian",
+    label: "Obsidian",
+    tint: "var(--orchid-soft)",
+    href: "https://obsidian.md",
+  },
+  {
+    slug: "spring",
+    label: "Spring",
+    tint: "var(--blue-soft)",
+    href: "https://spring.io",
+  },
 ];
 
 export const stamps = STAMPS.map((s) => ({

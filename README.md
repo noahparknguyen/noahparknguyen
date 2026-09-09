@@ -15,9 +15,9 @@ mostly been in the backend and internal tools.
 
 <div align="center">
 
-<a href="https://github.com/noahparknguyen/statmon"><img src="assets/card-statmon.webp" width="272" alt="Statmon. A set of Pokémon tools that can be read as of any generation. React, Vite, Tailwind, Cloudflare. 480 tests, zero runtime requests."></a>
-<a href="https://github.com/noahparknguyen/hubspot-recommendation-tool"><img src="assets/card-hubspot.webp" width="272" alt="HubSpot Tool. Paste a URL, see what a site runs, and what could replace it. Node, React, Docker, Jest. A capstone, built for a real client."></a>
-<a href="https://github.com/noahparknguyen/portfolio"><img src="assets/card-portfolio.webp" width="272" alt="Portfolio. My personal site, a bulletin board of pinned paper and live widgets. React, Vite, Tailwind, Cloudflare. Live at noahpn.dev."></a>
+<a href="https://github.com/noahparknguyen/statmon"><img src="assets/card-statmon.webp" width="272" alt="Statmon. A simple set of Pokémon tools. Compare stats, view type matchups, and play games. Built with React, Vite, Tailwind and Cloudflare. Live at statmon.noahparknguyen.workers.dev"></a>
+<a href="https://github.com/noahparknguyen/hubspot-recommendation-tool"><img src="assets/card-hubspot.webp" width="272" alt="HubSpot Tool. A discovery tool that lets you see what your website is built with, and recommends HubSpot products that could replace them. Built with Node, React, Docker and Jest. Live at hubspot-recommendation-tool.onrender.com"></a>
+<a href="https://github.com/noahparknguyen/portfolio"><img src="assets/card-portfolio.webp" width="272" alt="Portfolio. My personal website, a bulletin board where I show off both my professional work and hobbies. Built with React, Vite, Tailwind and Cloudflare. Live at noahpn.dev"></a>
 
 <br><br>
 
@@ -31,9 +31,6 @@ mostly been in the backend and internal tools.
 
 <br><br>
 
-Everything else is over at **[noahpn.dev](https://noahpn.dev)**.
-But only if you want to, no pressure.
-
-<img width="90" alt="" src="https://github.com/user-attachments/assets/aa03a572-e830-4382-a128-eb70992d8054">
+<img src="vendor/hk-the-hollow-knight-and-knight.webp" width="130" alt="">
 
 </div>

@@ -11,7 +11,13 @@
 // Icons marks on the stamp strip. Both are baked into the output, so the
 // published images depend on neither.
 
-import { existsSync, mkdirSync, statSync, writeFileSync, rmSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  statSync,
+  writeFileSync,
+  rmSync,
+} from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import puppeteer from "puppeteer-core";
@@ -109,7 +115,9 @@ await browser.close();
 rmSync(SCRATCH, { force: true });
 
 if (failed) {
-  console.error(`\n  ${failed} asset(s) failed to load, so the render is wrong.`);
+  console.error(
+    `\n  ${failed} asset(s) failed to load, so the render is wrong.`,
+  );
   process.exit(1);
 }
 console.log("\n  done");
