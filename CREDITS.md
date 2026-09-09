@@ -11,6 +11,10 @@ few things, and they are credited here for the same reason the site's
   CC0 1.0. Fetched at render time and baked into the WebP, so the published
   image has no runtime dependency on the service. Each mark remains the
   trademark of its respective owner.
+- **Java coffee cup** on the stack strip — [Font Awesome Free](https://fontawesome.com),
+  CC BY 4.0. Java is not in Simple Icons, which dropped it at the rights
+  holder's request, so the site falls back to Font Awesome for it and this
+  repo inlines the same glyph.
 - **Hollow Knight cameo** (`vendor/hk-the-hollow-knight-and-knight.webp`) —
   Team Cherry. Used decoratively, and it is not covered by this repo's licence.
 

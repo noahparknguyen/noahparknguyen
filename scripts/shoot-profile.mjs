@@ -90,10 +90,19 @@ for (const piece of ALL) {
   await page.evaluateHandle("document.fonts.ready");
 
   const file = resolve(OUT, `${piece.name}.webp`);
+  // A piece with a selector is cropped to that element, so its image is only as
+  // wide as its content. Everything else fills the viewport edge to edge.
+  const target = piece.selector ? await page.$(piece.selector) : page;
+  if (piece.selector && !target) {
+    console.error(`      ${piece.name}: no element matched ${piece.selector}`);
+    process.exitCode = 1;
+    await page.close();
+    continue;
+  }
   // `transparent` pieces sit straight on the README, which is a light ground for
   // some viewers and a dark one for others. Omitting the background is what lets
   // one image read on both.
-  await page.screenshot({
+  await target.screenshot({
     path: file,
     type: "webp",
     quality: 92,
