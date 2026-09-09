@@ -328,4 +328,76 @@ export const labels = LABELS.map((l) => ({
     ),
 }));
 
-export const ALL = [banner, ...labels, ...cards, ...stamps];
+// ─── GitHub social preview ─────────────────────────────────────────────────
+// 1280x640, the 2:1 GitHub asks for. It appears when the REPO is linked in
+// Slack, a tweet, a Discord paste. It is NOT the card for the profile page
+// itself, which GitHub builds from the avatar, and it is often rendered around
+// 500px wide, so this is a few words at a large size rather than a showcase.
+//
+// PNG, not WebP: GitHub's social preview upload accepts PNG, JPG and GIF only.
+// And it lives in docs/ rather than assets/ because GitHub stores the real one
+// outside the repo, so this is the checked-in copy of something uploaded by
+// hand. Same convention as statmon's docs/preview.png.
+export const preview = {
+  name: "preview",
+  width: 1280,
+  height: 640,
+  file: "docs/preview.png",
+  scale: 1,
+  // Asserted, not eyeballed. A social image that is subtly off centre looks
+  // fine in isolation and wrong beside anything else, and it is the first thing
+  // anyone sees. Same guard statmon's shoot script runs.
+  centre: ".wordmark",
+  html: () =>
+    shell(
+      1280,
+      640,
+      `
+  <div class="panel">
+    <span class="bracket tl"></span><span class="bracket tr"></span>
+    <span class="bracket bl"></span><span class="bracket br"></span>
+    <div class="block">
+      <p class="eyebrow">Hey there, I&rsquo;m</p>
+      <h1 class="wordmark">Noah Park-Nguyen</h1>
+      <p class="eyebrow right">A Full-Stack Developer</p>
+      <div class="rule"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+      <div class="foot">
+        <span class="eyebrow">Ottawa, Ontario</span>
+        <span class="eyebrow">noahpn.dev</span>
+      </div>
+    </div>
+  </div>`,
+      `
+  .panel {
+    position:relative; width:100%; height:100%;
+    background: var(--primary-soft); border:8px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+  }
+  /* Content stays well inside the edge, because some surfaces crop a 2:1 card
+     to their own ratio rather than letterboxing it. */
+  .bracket { position:absolute; width:34px; height:34px; opacity:.5; }
+  .tl { top:34px; left:34px; border-left:5px solid var(--ink); border-top:5px solid var(--ink); }
+  .tr { top:34px; right:34px; border-right:5px solid var(--ink); border-top:5px solid var(--ink); }
+  .bl { bottom:34px; left:34px; border-left:5px solid var(--ink); border-bottom:5px solid var(--ink); }
+  .br { bottom:34px; right:34px; border-right:5px solid var(--ink); border-bottom:5px solid var(--ink); }
+  .block { text-align:left; }
+  .block .eyebrow { font-size:24px; letter-spacing:.1em; }
+  .wordmark {
+    font-family: "Lilita One", cursive;
+    font-size: 104px; line-height: .95; text-transform: uppercase;
+    color: transparent;
+    background-image: linear-gradient(100deg, var(--wordmark-from), var(--wordmark-via), var(--wordmark-to));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-stroke: 3.5px var(--ink);
+    paint-order: stroke fill;
+    margin: 6px 0 8px;
+  }
+  .right { text-align:right; }
+  .rule { display:flex; align-items:center; gap:12px; margin-top:22px; }
+  .line { height:4px; flex:1; background:var(--ink); }
+  .dot { width:11px; height:11px; border-radius:50%; background:var(--ink); }
+  .foot { display:flex; justify-content:space-between; margin-top:16px; }`,
+    ),
+};
+
+export const ALL = [banner, preview, ...labels, ...cards, ...stamps];
