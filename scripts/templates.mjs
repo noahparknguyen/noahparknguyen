@@ -129,7 +129,7 @@ const CARDS = [
     blurb:
       "A simple set of Pokémon tools. Compare stats, view type matchups, and play games.",
     tags: ["React", "Vite", "Tailwind", "Cloudflare"],
-    note: "statmon.noahparknguyen.workers.dev",
+    note: "statmon.noahpn.dev",
   },
   {
     id: "hubspot",
