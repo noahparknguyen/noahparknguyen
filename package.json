@@ -1,0 +1,12 @@
+{
+  "name": "noahparknguyen-profile",
+  "private": true,
+  "type": "module",
+  "description": "The GitHub profile README, and the script that renders its artwork.",
+  "scripts": {
+    "shoot": "node scripts/shoot-profile.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.10.0"
+  }
+}
