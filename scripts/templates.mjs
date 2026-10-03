@@ -123,6 +123,15 @@ export const banner = {
 // top edge, which is what a tilt and a margin used to make room for.
 const CARDS = [
   {
+    id: "elbaite",
+    title: "Elbaite",
+    tint: "var(--rose-soft)",
+    blurb:
+      "Emulators written in Java, each named for a variety of elbaite. The first, Achroite, is a CHIP-8 emulator.",
+    tags: ["Java", "Swing", "Maven", "JUnit"],
+    note: "github.com/noahparknguyen/elbaite",
+  },
+  {
     id: "statmon",
     title: "Statmon",
     tint: "var(--violet-soft)",

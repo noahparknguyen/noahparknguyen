@@ -16,9 +16,11 @@
 
 <img src="assets/label-projects.webp" width="115" alt="My Projects">
 
-<a href="https://github.com/noahparknguyen/statmon"><img src="assets/card-statmon.webp" width="272" alt="Statmon. A simple set of Pokémon tools. Compare stats, view type matchups, and play games. Built with React, Vite, Tailwind and Cloudflare. Live at statmon.noahpn.dev"></a>
-<a href="https://github.com/noahparknguyen/hubspot-recommendation-tool"><img src="assets/card-hubspot.webp" width="272" alt="HubSpot Tool. A discovery tool that lets you see what your website is built with, and recommends HubSpot products that could replace them. Built with Node, React, Docker and Jest. Live at hubspot-recommendation-tool.onrender.com"></a>
-<a href="https://github.com/noahparknguyen/portfolio"><img src="assets/card-portfolio.webp" width="272" alt="Portfolio. My personal website, a bulletin board where I show off both my professional work and hobbies. Built with React, Vite, Tailwind and Cloudflare. Live at noahpn.dev"></a>
+<a href="https://github.com/noahparknguyen/elbaite"><img src="assets/card-elbaite.webp" width="410" alt="Elbaite. Emulators written in Java, each named for a variety of elbaite. The first, Achroite, is a CHIP-8 emulator. Built with Java, Swing, Maven, and JUnit. On GitHub at github.com/noahparknguyen/elbaite"></a>
+<a href="https://github.com/noahparknguyen/statmon"><img src="assets/card-statmon.webp" width="410" alt="Statmon. A simple set of Pokémon tools. Compare stats, view type matchups, and play games. Built with React, Vite, Tailwind, and Cloudflare. Live at statmon.noahpn.dev"></a>
+<br>
+<a href="https://github.com/noahparknguyen/hubspot-recommendation-tool"><img src="assets/card-hubspot.webp" width="410" alt="HubSpot Tool. A discovery tool that lets you see what your website is built with, and recommends HubSpot products that could replace them. Built with Node, React, Docker, and Jest. Live at hubspot-recommendation-tool.onrender.com"></a>
+<a href="https://github.com/noahparknguyen/portfolio"><img src="assets/card-portfolio.webp" width="410" alt="Portfolio. My personal website, a bulletin board where I show off both my professional work and hobbies. Built with React, Vite, Tailwind, and Cloudflare. Live at noahpn.dev"></a>
 
 <br>
 
