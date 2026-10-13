@@ -34,7 +34,8 @@ const TOKENS = `
 `;
 
 // Fredoka is the display face, Nunito the body, Lilita One the wordmark and
-// Caveat the handwriting. Same four the site loads, from the same place, so the
+// Caveat the handwriting. The same four families and weights the site uses,
+// from Google Fonts, where the site's own self-hosted copies come from, so the
 // render matches the site rather than approximating it.
 const FONTS =
   "https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700" +
@@ -120,8 +121,22 @@ export const banner = {
 // One image per project so each can be its own link in the README. The card
 // fills the whole frame, so the render is a clean rectangle with the ink border
 // on its outside edge. The pin sits inside the card rather than straddling the
-// top edge, which is what a tilt and a margin used to make room for.
+// top edge.
+//
+// In the README's order, which matches the pinned repos: two rows of two, then
+// the fifth card centred below, under both cards of the second row. Touching
+// cards must differ in tint, so the fifth can't take the second row's violet or
+// orchid. On a phone the cards stack in one column, and the same order holds.
 const CARDS = [
+  {
+    id: "hubspot",
+    title: "HubSpot Tool",
+    tint: "var(--blue-soft)",
+    blurb:
+      "A discovery tool that lets you see what your website is built with, and recommends HubSpot products that could replace them.",
+    tags: ["Node", "React", "Docker", "Jest"],
+    note: "hubspot-recommendation-tool.onrender.com",
+  },
   {
     id: "elbaite",
     title: "Elbaite",
@@ -141,15 +156,6 @@ const CARDS = [
     note: "statmon.noahpn.dev",
   },
   {
-    id: "hubspot",
-    title: "HubSpot Tool",
-    tint: "var(--blue-soft)",
-    blurb:
-      "A discovery tool that lets you see what your website is built with, and recommends HubSpot products that could replace them.",
-    tags: ["Node", "React", "Docker", "Jest"],
-    note: "hubspot-recommendation-tool.onrender.com",
-  },
-  {
     id: "portfolio",
     title: "Portfolio",
     tint: "var(--orchid-soft)",
@@ -157,6 +163,15 @@ const CARDS = [
       "My personal website. A bulletin board where I show off both my professional work and hobbies.",
     tags: ["React", "Vite", "Tailwind", "Cloudflare"],
     note: "noahpn.dev",
+  },
+  {
+    id: "lite-type",
+    title: "lite-type",
+    tint: "var(--rose-soft)",
+    blurb:
+      "A typing test for the desktop, with real code to practise on as well as words.",
+    tags: ["Java", "JavaFX", "Maven", "JUnit"],
+    note: "github.com/noahparknguyen/lite-type",
   },
 ];
 
@@ -202,35 +217,27 @@ export const cards = CARDS.map((c) => ({
 
 // ─── Tech stamps ───────────────────────────────────────────────────────────
 // The site's TechStack widget, which is a row of stamps. Each one renders as
-// its OWN image so the README can link it to that tool's homepage, the same way
+// its own image so the README can link it to that tool's homepage, the same way
 // the site's stamps are links. One combined strip could only ever carry one
-// link, which is why this is seven files rather than one.
+// link, which is why this is one file per stamp.
 //
-// The hrefs are the same ones the site uses (TechStack.jsx). The tint order is
-// solved, not chosen: two stamps touch whenever they sit 1, 3 or 4 apart once
-// the row wraps, so no pair at those distances may share a hue. Re-run the
-// solver in the commit that added this if you reorder or add one.
+// The list is the career stack: skills I'm at least familiar with that a
+// public project uses, with Java first. The hrefs match the site's
+// (TechStack.jsx). The tint order is solved, not chosen. The row wraps on
+// narrow screens with each line centred, so a stamp on a wrapped line sits
+// under two of the stamps above it. With five stamps, at two, three, or four to
+// a line, every pair except the first and the last can touch at some width, so
+// those two are the only ones that may share a hue. Re-check the wraps if you
+// reorder or add one.
 //
-// Editors are deliberately absent. The strip is things I build WITH, and an IDE
+// Editors are deliberately absent. The strip is things I build with, and an IDE
 // is where I sit, not part of the stack. That rule is inherited from the site.
 const STAMPS = [
-  {
-    slug: "react",
-    label: "React",
-    tint: "var(--rose-soft)",
-    href: "https://react.dev",
-  },
-  {
-    slug: "tailwindcss",
-    label: "Tailwind",
-    tint: "var(--violet-soft)",
-    href: "https://tailwindcss.com",
-  },
-  // Java is NOT in Simple Icons, which dropped it at the rights holder's request.
-  // The site uses react-icons' FaJava, which is Font Awesome Free's coffee cup, so
-  // that same glyph is inlined here rather than swapped for OpenJDK's Duke. It is
-  // the fallback the site already makes for both Java and LinkedIn.
-  // Font Awesome Free, CC BY 4.0 — see CREDITS.md.
+  // Java isn't in Simple Icons, which dropped it at the rights holder's request.
+  // The site uses react-icons' FaJava, which is Font Awesome Free's coffee cup,
+  // so that same glyph is inlined here rather than swapped for OpenJDK's Duke.
+  // It's the fallback the site makes for both Java and LinkedIn. Font Awesome
+  // Free, CC BY 4.0: see CREDITS.md.
   {
     label: "Java",
     tint: "var(--rose-soft)",
@@ -239,33 +246,34 @@ const STAMPS = [
     path: "M277.74 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1zm-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296 53.2 242.84 0 242.84 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2zm114.6-176.2c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3zm-6.1 270.5a12.19 12.19 0 0 1-2 2.6c128.3-33.7 81.1-118.9 19.8-97.3a17.33 17.33 0 0 0-8.2 6.3 70.45 70.45 0 0 1 11-3c31-6.5 75.5 41.5-20.6 91.4zM348 437.4s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6.7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.84 509.4 401 461.3 348 437.4zM124.44 396c-78.7 22 47.9 67.4 148.1 24.5a185.89 185.89 0 0 1-28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2zm179.8 97.2c-78.7 14.8-175.8 13.1-233.3 3.6 0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7zM260.64 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9a60.37 60.37 0 0 1-21.1-12.8z",
   },
   {
-    slug: "python",
-    label: "Python",
+    slug: "react",
+    label: "React",
     tint: "var(--violet-soft)",
-    href: "https://www.python.org",
+    href: "https://react.dev",
   },
   {
-    slug: "figma",
-    label: "Figma",
+    slug: "tailwindcss",
+    label: "Tailwind",
     tint: "var(--blue-soft)",
-    href: "https://www.figma.com",
+    href: "https://tailwindcss.com",
   },
   {
-    slug: "obsidian",
-    label: "Obsidian",
+    slug: "nodedotjs",
+    label: "Node.js",
+    file: "node",
     tint: "var(--orchid-soft)",
-    href: "https://obsidian.md",
+    href: "https://nodejs.org",
   },
   {
-    slug: "spring",
-    label: "Spring",
-    tint: "var(--blue-soft)",
-    href: "https://spring.io",
+    slug: "docker",
+    label: "Docker",
+    tint: "var(--rose-soft)",
+    href: "https://www.docker.com",
   },
 ];
 
 export const stamps = STAMPS.map((s) => ({
-  name: `stamp-${s.label.toLowerCase()}`,
+  name: `stamp-${s.file ?? s.label.toLowerCase()}`,
   width: 138,
   height: 112,
   transparent: true,
