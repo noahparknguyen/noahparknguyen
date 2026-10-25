@@ -397,24 +397,27 @@ export const cards = CARDS.map((c) => ({
 }));
 
 // ─── Tech stamps ───────────────────────────────────────────────────────────
-// The site's TechStack widget, which is a row of stamps. Each one renders as
-// its own image so the README can link it to that tool's homepage, the same way
-// the site's stamps are links. One combined strip could only ever carry one
-// link, which is why this is one file per stamp.
+// The site's TechStack stamps. Each one renders as its own image so the README
+// can link it to that tool's homepage, the same way the site's stamps are
+// links. One combined strip could only ever carry one link, which is why this
+// is one file per stamp.
 //
 // The list is the career stack: skills I'm at least familiar with and have a
 // real thing to talk about, with Java first. It runs from the backend to the
-// frontend. The hrefs follow the site's (TechStack.jsx), and the tilts follow
-// its alternation by position. The tint order is solved, not chosen. The row
-// wraps on narrow screens with each line centred, so a stamp on a wrapped line
-// sits under one or two of the stamps above it. With six stamps, at two to six
-// to a line, only three pairs never touch: Java and React, Java and Tailwind,
-// and Spring Boot and Tailwind, so those are the only ones that may share a
-// hue. That keeps the site's tints for Java, Node.js, and Tailwind. Re-check
-// the wraps if you reorder or add one.
+// frontend. The site's strip is my wider toolset, and its first six are these,
+// in this order. The hrefs follow the site's (TechStack.jsx), and the tilts
+// follow its alternation by position. The tint order is solved, not chosen.
+// The row wraps on narrow screens with each line centred, so a stamp on a
+// wrapped line sits under one or two of the stamps above it. With six stamps,
+// at two to six to a line, only three pairs never touch: Java and React, Java
+// and Tailwind, and Spring Boot and Tailwind. With four tints, Java and React
+// must share one, and so must Spring Boot and Tailwind. The site's phone layout
+// stacks both pairs, so it can't follow: Java, PostgreSQL, Node.js, and
+// Tailwind match the site, while Spring Boot and React differ. Re-check the
+// wraps if you reorder or add one.
 //
-// Editors are deliberately absent. The strip is things I build with, and an IDE
-// is where I sit, not part of the stack. That rule is inherited from the site.
+// Editors are deliberately absent, because this row is the stack. The site's
+// toolset has them.
 const STAMPS = [
   // Java isn't in Simple Icons, which dropped it at the rights holder's request.
   // The site uses react-icons' FaJava, which is Font Awesome Free's coffee cup,
