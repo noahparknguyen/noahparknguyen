@@ -7,9 +7,12 @@
 // find a real Chrome, render, write the file, report what it wrote. Artwork
 // nobody can reproduce goes stale, and this is one command.
 //
-// Needs the network the first time, for the four Google fonts and the Simple
-// Icons marks on the stamp strip. Both are baked into the output, so the
-// published images depend on neither.
+// Needs the network, for the four Google fonts and the Simple Icons marks on
+// the stamp strip. Both are baked into the output, so the published images
+// depend on neither.
+//
+// It prints each piece's README width, its size here times ZOOM, so the
+// README's width attributes come from the render rather than by eye.
 
 import {
   existsSync,
@@ -21,16 +24,16 @@ import {
 import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import puppeteer from "puppeteer-core";
-import { ALL } from "./templates.mjs";
+import { ALL, ZOOM } from "./templates.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
 const OUT = resolve(ROOT, "assets");
 
-// 1.5x, matching the portfolio's own screenshot script. The README displays the
-// banner at 860px, so 1800 device pixels is comfortably over 2x there, and 2x
-// capture only bought file size.
-const SCALE = 1.5;
+// The pieces are authored at the site's own sizes and shown at ZOOM, about
+// 1.14x, so 2.5x capture is just over 2x at the size the README shows them,
+// which keeps them sharp on a high-density screen.
+const SCALE = 2.5;
 
 // A scratch file rather than setContent, so a template can reference anything
 // beside it by a relative path the way an ordinary page would. It lives at the
@@ -132,6 +135,29 @@ for (const piece of ALL) {
     }
   }
 
+  // A piece with `fits` must hold its text. A card that is too small for its
+  // summary clips it silently, so measure every matching element instead.
+  if (piece.fits) {
+    const over = await page.evaluate((sel) => {
+      return [...document.querySelectorAll(sel)]
+        .filter((el) => el.scrollHeight > el.clientHeight + 0.5 || el.scrollWidth > el.clientWidth + 0.5)
+        .map((el) => `.${el.className} needs ${el.scrollWidth}x${el.scrollHeight}, has ${el.clientWidth}x${el.clientHeight}`);
+    }, piece.fits);
+    for (const o of over) {
+      console.error(`      ${piece.name}: ${o}`);
+      process.exitCode = 1;
+    }
+  }
+
+  // The size this piece is drawn at here, before SCALE, which the README width
+  // is worked out from. Measured before the page closes.
+  const drawn = piece.selector
+    ? await page.evaluate((sel) => {
+        const r = document.querySelector(sel).getBoundingClientRect();
+        return { w: r.width, h: r.height };
+      }, piece.selector)
+    : { w: piece.width, h: piece.height };
+
   // `transparent` pieces sit straight on the README, which is a light ground for
   // some viewers and a dark one for others. Omitting the background is what lets
   // one image read on both.
@@ -145,12 +171,10 @@ for (const piece of ALL) {
   await page.close();
 
   const kb = (statSync(file).size / 1024).toFixed(0);
-  // Selector-cropped pieces are only as big as their element, so report what
-  // was actually written rather than the viewport it was rendered in.
-  const shown = piece.selector
-    ? "cropped to content"
-    : `${piece.width * scale}x${piece.height * scale}`;
-  console.log(`  ${relative(ROOT, file)} — ${kb} KB, ${shown}`);
+  const px = `${Math.round(drawn.w * scale)}x${Math.round(drawn.h * scale)}`;
+  // The social preview is uploaded to GitHub, not shown in the README.
+  const readme = piece.file ? "" : `, README width="${Math.round(drawn.w * ZOOM)}"`;
+  console.log(`  ${relative(ROOT, file)} — ${kb} KB, ${px}${readme}`);
   if (missing.length) {
     failed += missing.length;
     for (const m of missing) console.warn(`      could not load: ${m}`);
