@@ -31,6 +31,7 @@ const TOKENS = `
   --label: #5a5393;
   --primary-soft: #eceaf8;
   --rose: #f58fbe;
+  --violet: #9e8fd0;
   --blue: #9dbee6;
   --rose-soft: #f3c9dc;
   --violet-soft: #d8cfee;
@@ -198,15 +199,18 @@ export const preview = {
 // top edge, which holds the glyph. The site's three are GitHub, LinkedIn and
 // Email. On GitHub the first would point at the page you're on, so the
 // portfolio takes its place, its blue, and its tab on the left, with the
-// site's favicon, the pin, as its glyph. Each card is narrower than the
-// site's, so three fit across the README column.
+// site's favicon, the pin, as its glyph. The pin is drawn in ink, like the
+// other two glyphs, with the card's tint for its highlight, since the favicon's
+// rose was the only colour on a tab. The rule under each handle takes the
+// card's own hue, as on the site. Each card is narrower than the site's, so
+// three fit across the README column.
 //
 // LinkedIn's mark is Font Awesome Free's bare "in" (react-icons' FaLinkedinIn),
 // the same fallback the site makes, since Simple Icons dropped LinkedIn at the
 // rights holder's request. CC BY 4.0: see CREDITS.md. Email has no brand mark,
 // so it gets the site's drawn envelope.
 const GLYPHS = {
-  pin: `<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" style="fill:var(--rose);stroke:var(--ink);stroke-width:2"/><circle cx="6" cy="6" r="2" style="fill:var(--paper)"/></svg>`,
+  pin: `<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" style="fill:var(--ink)"/><circle cx="6" cy="6" r="2" style="fill:var(--blue-soft)"/></svg>`,
   linkedin: `<svg viewBox="0 0 448 512" aria-hidden="true" style="fill:var(--ink)"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>`,
   envelope: `<svg viewBox="0 0 16 16" aria-hidden="true" style="fill:none;stroke:var(--ink);stroke-width:2"><rect x="1.5" y="3.5" width="13" height="9"/><path d="M1.5 4 L8 9 L14.5 4" style="stroke-linecap:round;stroke-linejoin:round"/></svg>`,
 };
@@ -219,6 +223,7 @@ const CONTACTS = [
     label: "Portfolio",
     handle: "noahpn.dev",
     tint: "var(--blue-soft)",
+    rule: "var(--blue)",
     rotate: -1.5,
     tab: "left:12px;",
     glyph: GLYPHS.pin,
@@ -228,6 +233,7 @@ const CONTACTS = [
     label: "LinkedIn",
     handle: "in/noahparknguyen",
     tint: "var(--rose-soft)",
+    rule: "var(--rose)",
     rotate: 1,
     tab: "left:50%; transform:translateX(-50%);",
     glyph: GLYPHS.linkedin,
@@ -237,6 +243,7 @@ const CONTACTS = [
     label: "Email",
     handle: "noahparknguyen@gmail.com",
     tint: "var(--violet-soft)",
+    rule: "var(--violet)",
     rotate: -1,
     tab: "right:12px;",
     glyph: GLYPHS.envelope,
@@ -282,7 +289,7 @@ export const contacts = CONTACTS.map((c) => ({
     font-size:18px; font-weight:700; line-height:1.25; color:var(--ink);
   }
   .handle {
-    margin-top:4px; padding-bottom:2px; border-bottom:1px solid var(--blue);
+    margin-top:4px; padding-bottom:2px; border-bottom:1px solid ${c.rule};
     overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
     font-size:12px; line-height:16px; color:var(--gray-600);
   }`,
